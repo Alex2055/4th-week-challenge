@@ -1,0 +1,48 @@
+.page{
+    border-style: solid;
+    border-color: black;
+    border-radius: 2mm;
+    height: 300px;
+    margin: 50px;
+    padding: 50px;
+    text-align: center;
+}
+ 
+#top{
+    margin: 5px, 20px, 50px, 20px;
+    position: relative;
+    width: 400;
+    height: 20px;
+   
+}
+
+#time{
+position: relative;
+margin-right: 25px;
+float: right;
+
+}
+#score{
+    position: relative;
+    width: 150px;
+    float: left;
+} 
+
+#start-quiz{
+    margin-top: 10px;
+    background-color: rebeccapurple;
+    height: 35px;
+    width: 115px;
+    font-size: medium;
+    border-radius: 2mm;
+    color: white;
+}
+
+#main-text{
+    position: relative;
+    margin-top: 50px;
+}
+
+.hide{
+    display: none;
+}
