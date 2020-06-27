@@ -1,34 +1,57 @@
 window.addEventListener('DOMContentLoaded', connectEvents);
 
+var currentcardindex = 0;
+
+var score = 0;
+
+function cardLoad(arreyindex) {
+    var z = document.getElementById("question");
+    z.innerText = cards[arreyindex].q
+    for (var u = 0; u < cards[arreyindex].answers.length; u++) {
+        var h = document.createElement("BUTTON");
+        h.classList.add("cardbuttons");
+        var m = document.createTextNode(cards[arreyindex].answers[u].text);
+        h.appendChild(m);
+        document.getElementById("answers").appendChild(h);
+        h.onclick = nextCard(cards[arreyindex].answers[u].isCorrect);
+
+    }
+}
+// after start quiz button clicked hide intro and load question and buttons
+function showQuestion() {
+    var x = document.getElementById("main-text");
+    x.style.display = "none";
+
+    var y = document.getElementById("question-body");
+    y.style.display = "block";
+    currentcardindex = 0;
+    cardLoad(0);
+}
 
 function connectEvents() {
     document.getElementById("start-quiz").onclick = showQuestion;
 
-    // after start quiz button clicked hide intro and load question and buttons
-    function showQuestion() {
-        var x = document.getElementById("main-text");
-        x.style.display = "none";
+}
 
-        var y = document.getElementById("question-body");
-        y.style.display = "block";
-    }
-
-
-
-    function cardLoad(arreyindex) {
-        var z = document.getElementById("question");
-        z.innerText = cards[arreyindex].q
-        for (var u = 0; u < cards[arreyindex].answers.length; u++) {
-            var h = document.createElement("BUTTON");
-            var m = document.createTextNode(cards[arreyindex].answers[u].text);
-            h.appendChild(m);
-            document.getElementById("answers").appendChild(h);
+function nextCard(isCorrect) {
+    return function () {
+        if (isCorrect) {
+            console.log("correct");
 
         }
+        else {
+            console.log("incorrect");
+
+        }
+        document.querySelectorAll(".cardbuttons").forEach(function(button){button.remove()});
         
+
+        currentcardindex ++;
+        cardLoad(currentcardindex);
+
     }
-    cardLoad(0);
 }
+
 
 
 
