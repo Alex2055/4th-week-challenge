@@ -1,8 +1,8 @@
-.page{
+.page  {
     border-style: solid;
     border-color: black;
     border-radius: 2mm;
-    height: 300px;
+    height: auto;
     margin: 50px;
     padding: 50px;
     text-align: center;
@@ -28,7 +28,7 @@ float: right;
     float: left;
 } 
 
-#start-quiz{
+button{
     margin-top: 10px;
     background-color: rebeccapurple;
     height: 35px;
@@ -43,6 +43,23 @@ float: right;
     margin-top: 50px;
 }
 
-.hide{
+ #question-body{
     display: none;
+} 
+
+/*get option buttons in block*/
+
+
+#answers button {
+    display: block; 
 }
+
+#answers{
+    
+    padding-bottom: 20px;
+    border-style: solid;
+    border-color: gray;
+    border-width: 0 0 1px 0;
+}
+
+
