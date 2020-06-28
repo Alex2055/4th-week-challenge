@@ -12,7 +12,7 @@
     <div class="page">
         <section id="top">
             <a id="score" href="view-score">Wiew high scores</a>
-            <span id="time">Time:</span>
+            <p id="time">Time: <span id="time-amount"></span></p>
         </section>
         <div id="main-text">
             <h2>Coding Quiz Challenge</h2>
@@ -36,9 +36,20 @@
             </ol>
             
         </div>
-        <p id="C-or-W"></p>
-    </div>
+        
+        <div id="init-input">
+            <h2>All Done!</h2>
+            <div>
+                <p>Your final score is <span id="final-score"></span></p>
 
+                <p>Enter initials: <input type="text" ><button id="submit-button">Submit</button></p>
+                
+
+
+            </div>
+            
+        </div>
+        <p id="C-or-W"></p>
 
     </div>
     <script src="./script.js">

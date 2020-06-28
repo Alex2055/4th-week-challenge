@@ -4,7 +4,9 @@ var currentcardindex = 0;
 
 var score = 0;
 
+
 function cardLoad(arreyindex) {
+    console.log(score)
     var z = document.getElementById("question");
     z.innerText = cards[arreyindex].q
     for (var u = 0; u < cards[arreyindex].answers.length; u++) {
@@ -14,9 +16,12 @@ function cardLoad(arreyindex) {
         h.appendChild(m);
         document.getElementById("answers").appendChild(h);
         h.onclick = nextCard(cards[arreyindex].answers[u].isCorrect);
-
+        
+        }
+    
     }
-}
+    
+
 // after start quiz button clicked hide intro and load question and buttons
 function showQuestion() {
     var x = document.getElementById("main-text");
@@ -25,34 +30,71 @@ function showQuestion() {
     var y = document.getElementById("question-body");
     y.style.display = "block";
     currentcardindex = 0;
+    
     cardLoad(0);
+timerGo();
 }
 
 function connectEvents() {
+  
     document.getElementById("start-quiz").onclick = showQuestion;
-
+    
+    
+    
 }
 
 function nextCard(isCorrect) {
     return function () {
         if (isCorrect) {
-            console.log("correct");
+            score = score + 100;
 
+            document.getElementById("C-or-W").innerHTML = "Correct";
         }
         else {
-            console.log("incorrect");
-
+            console.log("wrong");
+            document.getElementById("C-or-W").innerHTML = "Wrong"
         }
-        document.querySelectorAll(".cardbuttons").forEach(function(button){button.remove()});
-        
+        document.querySelectorAll(".cardbuttons").forEach(function (button) { button.remove() });
 
-        currentcardindex ++;
+
+        currentcardindex++;
+        if(currentcardindex == cards.length){
+            initialsEnter()
+        }
+        else{
         cardLoad(currentcardindex);
-
+        }
     }
+
 }
 
+function initialsEnter(){
+    var y = document.getElementById("question-body");
+    y.style.display = "none";
+    var y = document.getElementById("init-input");
+    y.style.display = "block";
+    var scoreto = score.toString();
+    document.getElementById("final-score").innerHTML = scoreto;
 
+}
+
+function timerGo (){
+    var timeleft = 30;
+var downloadTimer = setInterval(function(){
+  if(timeleft <= 0){
+    clearInterval(downloadTimer);
+    initialsEnter();
+    timeleft++;
+  }
+  timeleft = timeleft-1;
+  timeleftstring = timeleft.toString();
+  document.getElementById("time-amount").innerHTML = timeleftstring;
+},1000);
+}
+
+function submitScore(){
+
+}
 
 
 
@@ -82,11 +124,11 @@ var cards = [{
     q: "The condition in an if / else statement is enclosed with_______.",
     answers:
         [{
-            text: "1. quotes",
+            text: "1. I can set any ammount",
             isCorrect: false
         },
         {
-            text: "2. curly brackets",
+            text: "2. of possible aswers",
             isCorrect: false
         },
         {
@@ -94,7 +136,15 @@ var cards = [{
             isCorrect: true
         },
         {
-            text: "4. square brackets",
+            text: "4. curly brackets",
+            isCorrect: false
+        },
+        {
+            text: "5. quotes",
+            isCorrect: false
+        },
+        {
+            text: "6. square brackets",
             isCorrect: false
         }]
 },

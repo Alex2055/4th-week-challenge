@@ -2,6 +2,7 @@
     border-style: solid;
     border-color: black;
     border-radius: 2mm;
+    min-height: 350px;
     height: auto;
     margin: 50px;
     padding: 50px;
@@ -43,9 +44,11 @@ button{
     margin-top: 50px;
 }
 
- #question-body{
+ #question-body, #init-input {
     display: none;
 } 
+
+    
 
 /*get option buttons in block*/
 
@@ -77,7 +80,20 @@ button{
     
 }
 #C-or-W {
+    text-align: left;
+   padding-top: 10px;
     border-style: solid;
     border-color: gray;
     border-width: 1px 0 0 0;
+    font-size: large;
+    font-style: italic;
+color: lightslategray
+}
+
+#init-input{
+    text-align: left;
+}
+#submit-button{
+    margin-left: 10px;
+    height: 25px;
 }
