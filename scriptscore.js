@@ -9,8 +9,12 @@ function connectEvents(){
     a.classList.add("new-score");
     var myresult = localStorage.getItem("initials") + " " + localStorage.getItem("score");
     console.log(myresult);
+    if (myresult === "null null"){
+        document.querySelector(".new-score").innerHTML = "";
+    }
+    else{
     document.querySelector(".new-score").innerHTML = myresult;
-    
+    }
     }
 //clear local storage and li element 
     function clearScores(){
