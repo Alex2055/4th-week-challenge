@@ -1,10 +1,12 @@
 window.addEventListener('DOMContentLoaded', connectEvents);
 
+//storage current card index
 var currentcardindex = 0;
 
+// and score
 var score = 0;
 
-
+// load question and create buttons with possible answers
 function cardLoad(arreyindex) {
     console.log(score)
     var z = document.getElementById("question");
@@ -35,14 +37,14 @@ function showQuestion() {
     timerGo();
 }
 
+// 
 function connectEvents() {
 
     document.getElementById("start-quiz").onclick = showQuestion;
 
-
-
 }
 
+// show previous question result, add score,  and load next card
 function nextCard(isCorrect) {
     return function () {
         if (isCorrect) {
@@ -56,7 +58,7 @@ function nextCard(isCorrect) {
         }
         document.querySelectorAll(".cardbuttons").forEach(function (button) { button.remove() });
 
-
+// check if no more card get to enter initials
         currentcardindex++;
         if (currentcardindex == cards.length) {
             initialsEnter()
@@ -67,7 +69,7 @@ function nextCard(isCorrect) {
     }
 
 }
-
+// hide question and show initials enter with current score
 function initialsEnter() {
     var y = document.getElementById("question-body");
     y.style.display = "none";
@@ -79,7 +81,7 @@ function initialsEnter() {
 
 
 }
-
+// timer. when rich 0 send to initials enter 
 function timerGo() {
     var timeleft = 20;
     var downloadTimer = setInterval(function () {
@@ -94,6 +96,7 @@ function timerGo() {
     }, 1000);
 }
 
+//when submit button clicked save score and initials in local storage and go to high scores page
 function submitScore() {
     window.location.href = './highscores.html';
     var initials = document.querySelector("#input-value").value;
@@ -104,7 +107,7 @@ function submitScore() {
 
 }
 
-
+// array with questions, answers. Ammount of possible answer can be changed.
 
 var cards = [{
 

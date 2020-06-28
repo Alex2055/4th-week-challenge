@@ -1,5 +1,6 @@
 window.addEventListener('DOMContentLoaded', connectEvents);
 
+// add li element set class and show initials,score 
 function connectEvents(){
     
     document.getElementById("clear-scores").onclick = clearScores; 
@@ -11,7 +12,7 @@ function connectEvents(){
     document.querySelector(".new-score").innerHTML = myresult;
     
     }
-
+//clear local storage and li element 
     function clearScores(){
         localStorage.clear();
         document.querySelector(".new-score").innerHTML = "";
