@@ -16,11 +16,11 @@ function cardLoad(arreyindex) {
         h.appendChild(m);
         document.getElementById("answers").appendChild(h);
         h.onclick = nextCard(cards[arreyindex].answers[u].isCorrect);
-        
-        }
-    
+
     }
-    
+
+}
+
 
 // after start quiz button clicked hide intro and load question and buttons
 function showQuestion() {
@@ -30,17 +30,17 @@ function showQuestion() {
     var y = document.getElementById("question-body");
     y.style.display = "block";
     currentcardindex = 0;
-    
+
     cardLoad(0);
-timerGo();
+    timerGo();
 }
 
 function connectEvents() {
-  
+
     document.getElementById("start-quiz").onclick = showQuestion;
-    
-    
-    
+
+
+
 }
 
 function nextCard(isCorrect) {
@@ -58,41 +58,49 @@ function nextCard(isCorrect) {
 
 
         currentcardindex++;
-        if(currentcardindex == cards.length){
+        if (currentcardindex == cards.length) {
             initialsEnter()
         }
-        else{
-        cardLoad(currentcardindex);
+        else {
+            cardLoad(currentcardindex);
         }
     }
 
 }
 
-function initialsEnter(){
+function initialsEnter() {
     var y = document.getElementById("question-body");
     y.style.display = "none";
     var y = document.getElementById("init-input");
     y.style.display = "block";
     var scoreto = score.toString();
     document.getElementById("final-score").innerHTML = scoreto;
+    document.getElementById("submit-button").onclick = submitScore;
+
 
 }
 
-function timerGo (){
-    var timeleft = 30;
-var downloadTimer = setInterval(function(){
-  if(timeleft <= 0){
-    clearInterval(downloadTimer);
-    initialsEnter();
-    timeleft++;
-  }
-  timeleft = timeleft-1;
-  timeleftstring = timeleft.toString();
-  document.getElementById("time-amount").innerHTML = timeleftstring;
-},1000);
+function timerGo() {
+    var timeleft = 20;
+    var downloadTimer = setInterval(function () {
+        if (timeleft <= 0) {
+            clearInterval(downloadTimer);
+            initialsEnter();
+            timeleft++;
+        }
+        timeleft = timeleft - 1;
+        timeleftstring = timeleft.toString();
+        document.getElementById("time-amount").innerHTML = timeleftstring;
+    }, 1000);
 }
 
-function submitScore(){
+function submitScore() {
+    window.location.href = './highscores.html';
+    var initials = document.querySelector("#input-value").value;
+    var score = document.getElementById("final-score").innerHTML;
+    localStorage.setItem("initials", initials);
+    localStorage.setItem("score", score);
+
 
 }
 
@@ -124,11 +132,11 @@ var cards = [{
     q: "The condition in an if / else statement is enclosed with_______.",
     answers:
         [{
-            text: "1. I can set any ammount",
+            text: "1. I can set any amount",
             isCorrect: false
         },
         {
-            text: "2. of possible aswers",
+            text: "2. of possible aswers here",
             isCorrect: false
         },
         {
